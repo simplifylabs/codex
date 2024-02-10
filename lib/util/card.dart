@@ -33,7 +33,6 @@ class Card {
   // Blacklisted words for svg
   static const List<dynamic> blacklist = [
     // Strings
-    '<rect fill="#00000000" width="64" height="64" x="0" y="0"/>',
     'xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"',
     'xmlns:dc="http://purl.org/dc/elements/1.1/"',
     'xmlns:cc="http://creativecommons.org/ns#"',
@@ -137,9 +136,7 @@ class Card {
     if (!Internet.isOnline) return;
 
     // Create the uri
-    var url = Uri.parse("https://avatars.dicebear.com/api/personas/" +
-        name +
-        ".svg?b=%2300000000");
+    var url = Uri.parse("https://api.dicebear.com/7.x/personas/svg?backgroundColor=transparent&seed=" + name);
 
     // Send it!
     var res = await http.get(url);
